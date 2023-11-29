@@ -1,7 +1,7 @@
 const Contacts = ({contacts}) =>{
     return(
         <ul>
-            {contacts.map(({name}) => (<li>{name}</li>))}
+            {contacts.map(({name, id}) => (<li key={id}>{name}</li>))}
         </ul>
         
     )

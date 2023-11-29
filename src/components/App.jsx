@@ -26,31 +26,33 @@ export class App extends Component{
         contacts: [],
         name: ''
     }
-    
+    handleChange = (event) => {
+        this.setState({ name: event.target.value });
+    }
     handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
         
         const name = form.elements.name.value;
-        // const id = nanoid();
-        // const obj = { name: name, id: id };
-        // this.setState((prev) => {
-            console.log(name);
-        //     // return contacts: prev.contacts.push(obj),
-        //     console.log(this.state.contacts)
-        
-        // })
+        const id = nanoid();
+        const obj = { name: name, id: id };
+    
+        //  this.setState((prev) => ({contacts: prev.contacts.push(obj)}))
+
+        this.setState((prev) => {(prev.contacts.push(obj))});
+        console.log(this.state.contacts);
+        form.reset();
     }
 
     render(){
         return(
             <>
             <Section title="Phonebook">
-                <Form handleSubmit={this.handleSubmit}/>
+                <Form handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
             </Section>
             {this.state.contacts.length > 0 &&
             (<Section title="Contacts">
-                <Contacts contacts={this.state.contacts} />
+                    <Contacts contacts={this.state.contacts}/>
             </Section>
             )}
             </>
