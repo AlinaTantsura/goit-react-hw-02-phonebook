@@ -1,9 +1,8 @@
 const Contacts = ({contacts}) =>{
-    return(
+    return (
         <ul>
-            {contacts.map(({name, id}) => (<li key={id}>{name}</li>))}
+            {contacts.map(({ name, id, number }) => (<li key={id}>{name}: {number}</li>))}
         </ul>
-        
     )
 }
 
