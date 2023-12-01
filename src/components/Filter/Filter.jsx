@@ -1,8 +1,10 @@
+import Input from "components/Form/Input.styled";
+
 const Filter = ({ inputInfo, handleChange }) => {
     return (
         <div>
-        <h3>Find contacts by name</h3>
-            <input type="text" name="filter" value={inputInfo.filter} onChange={handleChange} />       
+        <p>Find contacts by name</p>
+            <Input type="text" name="filter" value={inputInfo.filter} onChange={handleChange} />       
         </div>
     )
 }

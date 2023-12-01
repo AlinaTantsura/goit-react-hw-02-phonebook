@@ -1,5 +1,8 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
+import FormStyled from "./Form.styled";
+import Button from "./Button.styled";
+import Input from "./Input.styled";
 
 class Form extends Component{
     state = {
@@ -25,51 +28,33 @@ class Form extends Component{
 
     render() {
         return (
-        <form onSubmit={this.handleSubmit}>
+        <FormStyled onSubmit={this.handleSubmit}>
         <label>
-            Name<br/>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-        </label><br/>
+            Name
+                    <Input
+                        type="text"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleChange}
+                        required
+                        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                        title="Name must contain only letters" />
+        </label>
         <label>
-            Number<br/>
-            <input type="tel" name="number" value={this.state.number} onChange={this.handleChange} required />
-        </label><br/>
-        <button type="submit">Add contact</button>
-    </form>
+            Number
+                    <Input
+                        type="tel"
+                        name="number"
+                        value={this.state.number}
+                        onChange={this.handleChange}
+                        required
+                        pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+                        title="'123-45-67'   Number must contain only numbers"/>
+        </label>
+        <Button type="submit">Add contact</Button>
+    </FormStyled>
     )
     }
 }
 
 export default Form;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const Form = ({ handleSubmit, handleChange, inputInfo }) => {
-//     return (
-//         <form onSubmit={handleSubmit}>
-//         <label>
-//             Name<br/>
-//             <input type="text" name="name" value={inputInfo.name} onChange={handleChange} required />
-//         </label><br/>
-//         <label>
-//             Number<br/>
-//             <input type="tel" name="number" value={inputInfo.number} onChange={handleChange} required />
-//         </label><br/>
-//         <button type="submit">Add contact</button>
-//     </form>
-//     )
-    
-// }
-// export default Form;
